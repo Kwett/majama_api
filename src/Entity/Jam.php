@@ -32,6 +32,14 @@ class Jam
     #[Groups(['read:collections'])]
     private ?\DateTimeInterface $timeEnd = null;
 
+    #[ORM\Column(length: 255, nullable: true)] 
+    #[Groups(['read:collections'])]
+    private ?string $fbLink = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['read:collections'])]
+    private ?string $instaLink = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +77,30 @@ class Jam
     public function setTimeEnd(\DateTimeInterface $timeEnd): static
     {
         $this->timeEnd = $timeEnd;
+
+        return $this;
+    }
+
+    public function getFbLink(): ?string
+    {
+        return $this->fbLink;
+    }
+
+    public function setFbLink(?string $fbLink): static
+    {
+        $this->fbLink = $fbLink;
+
+        return $this;
+    }
+
+    public function getInstaLink(): ?string
+    {
+        return $this->instaLink;
+    }
+
+    public function setInstaLink(?string $instaLink): static
+    {
+        $this->instaLink = $instaLink;
 
         return $this;
     }
