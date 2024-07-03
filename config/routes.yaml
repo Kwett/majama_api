@@ -3,3 +3,8 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+jam_maps:
+    path: /api/maps
+    controller: App\Controller\JamController::getPlace
+    methods: [GET]

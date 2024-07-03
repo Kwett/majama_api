@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: JamRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => ['read:collections']],
+    order: ['timeStart' => 'ASC'],
 )]
 class Jam
 {
