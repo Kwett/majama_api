@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request; // Import Request
 use Symfony\Component\Routing\Annotation\Route; // Correct annotation import
 use App\Service\GoogleMapsService;
@@ -19,12 +20,12 @@ class JamController extends AbstractController
     /**
      * @Route("/api/maps", name="get_place", methods={"GET"})
      */
-    public function getPlace(Request $request): JsonResponse // Correct type-hinting
+    public function getPlace(Request $request): JsonResponse
     {
-        $query = $request->query->get('query', ''); // Get 'query' parameter from the request
+        $query = $request->query->get('query', ''); 
 
         if (empty($query)) {
-            return new JsonResponse(['error' => 'Query parameter is missing'], JsonResponse::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error' => 'Query parameter is missing'], Response::HTTP_BAD_REQUEST);
         }
 
         $result = $this->googleMapsService->findPlaceFromText($query);
