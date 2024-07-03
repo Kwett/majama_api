@@ -41,6 +41,12 @@ class Jam
     #[Groups(['read:collections'])]
     private ?string $instaLink = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $visual = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +108,30 @@ class Jam
     public function setInstaLink(?string $instaLink): static
     {
         $this->instaLink = $instaLink;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getVisual(): ?string
+    {
+        return $this->visual;
+    }
+
+    public function setVisual(?string $visual): static
+    {
+        $this->visual = $visual;
 
         return $this;
     }

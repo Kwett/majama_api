@@ -46,6 +46,12 @@ class Place
     #[ORM\OneToMany(targetEntity: Jam::class, mappedBy: 'place')]
     private Collection $place;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $fbTag = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $instaTag = null;
+
     public function __construct()
     {
         $this->place = new ArrayCollection();
@@ -142,6 +148,30 @@ class Place
                 $place->setPlace(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFbTag(): ?string
+    {
+        return $this->fbTag;
+    }
+
+    public function setFbTag(?string $fbTag): static
+    {
+        $this->fbTag = $fbTag;
+
+        return $this;
+    }
+
+    public function getInstaTag(): ?string
+    {
+        return $this->instaTag;
+    }
+
+    public function setInstaTag(?string $instaTag): static
+    {
+        $this->instaTag = $instaTag;
 
         return $this;
     }
