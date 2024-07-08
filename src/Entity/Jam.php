@@ -42,9 +42,11 @@ class Jam
     private ?string $instaLink = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['read:collections'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['read:collections'])]
     private ?string $visual = null;
 
     public function getId(): ?int
