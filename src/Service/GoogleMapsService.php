@@ -24,8 +24,10 @@ class GoogleMapsService
             $this->googleApiKey
         );
 
+        
         try {
             $response = $this->httpClient->request('GET', $url);
+
             $data = $response->toArray();
         } catch (TransportExceptionInterface $e) {
             // Log error or handle exception as needed

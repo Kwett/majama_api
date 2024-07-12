@@ -32,4 +32,24 @@ class JamController extends AbstractController
 
         return new JsonResponse($result);
     }
+
+    #[Route('/api/jams', methods: ['POST'])]
+    public function addJam(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $jam = new Jam();
+        $jam->setPlace($this->getDoctrine()->getRepository(Place::class)->find($data['place']));
+        $jam->setTimeStart(new \DateTime($data['timeStart']));
+        $jam->setTimeEnd(new \DateTime($data['timeEnd']));
+        $jam->setFbLink($data['fbLink']);
+        $jam->setInstaLink($data['instaLink']);
+        $jam->setDescription($data['description']);
+        $jam->setVisual($data['visual']);
+
+        $entityManager->persist($jam);
+        $entityManager->flush();
+
+        return new Response('Jam added successfully', Response::HTTP_CREATED);
+    }
 }

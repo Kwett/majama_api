@@ -47,9 +47,11 @@ class Place
     private Collection $place;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['read:collections'])]
     private ?string $fbTag = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['read:collections'])]
     private ?string $instaTag = null;
 
     public function __construct()
